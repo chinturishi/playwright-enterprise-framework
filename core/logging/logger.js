@@ -1,6 +1,6 @@
 
 // Import Winston logging library
-const winston = require("winston");
+import winston from "winston"
 
 
 // Create reusable logger object for entire framework
