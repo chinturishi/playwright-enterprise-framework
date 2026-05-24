@@ -1,0 +1,2 @@
+// #genai
+// acceptanceCriteriaParser: requirements → tests

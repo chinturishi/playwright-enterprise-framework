@@ -1,0 +1,2 @@
+// #genai
+// scenarioGenerator: requirements → tests

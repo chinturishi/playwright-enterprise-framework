@@ -1,0 +1,2 @@
+// #genai
+// jiraParser: requirements → tests

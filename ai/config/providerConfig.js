@@ -1,0 +1,2 @@
+// #genai
+// providerConfig: AI settings

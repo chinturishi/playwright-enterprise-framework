@@ -1,0 +1,2 @@
+// #genai
+// storyAnalyzer: requirements → tests

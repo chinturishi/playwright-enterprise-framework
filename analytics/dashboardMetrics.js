@@ -1,0 +1,2 @@
+// #genai
+// dashboardMetrics: metrics aggregation

@@ -1,0 +1,2 @@
+// #genai
+// Slack message layout

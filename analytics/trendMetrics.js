@@ -1,0 +1,2 @@
+// #genai
+// trendMetrics: metrics aggregation

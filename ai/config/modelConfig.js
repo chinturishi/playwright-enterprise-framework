@@ -1,0 +1,2 @@
+// #genai
+// modelConfig: AI settings
