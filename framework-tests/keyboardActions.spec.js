@@ -69,7 +69,7 @@ test.describe("KeyboardActions @verify", () => {
     const input = page.locator("#input");
     await input.focus();
     await keyboardActions.keyDown(page, "Shift");
-    await keyboardActions.press(page, "a");
+    await keyboardActions.press(page, "KeyA");
     await keyboardActions.keyUp(page, "Shift");
     await expect(input).toHaveValue("A");
   });

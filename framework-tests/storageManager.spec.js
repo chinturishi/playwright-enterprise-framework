@@ -16,7 +16,7 @@ test.describe("@verify StorageManager", () => {
   test("setLocalStorage + getLocalStorage - round-trip value matches", async ({
     page,
   }) => {
-    await page.goto("about:blank");
+    await page.setContent("<html><body></body></html>");
     await storageManager.setLocalStorage(page, "framework_key", "framework_value");
     const value = await storageManager.getLocalStorage(page, "framework_key");
     expect(value).toBe("framework_value");
@@ -25,7 +25,7 @@ test.describe("@verify StorageManager", () => {
   test("setSessionStorage + getSessionStorage - round-trip value matches", async ({
     page,
   }) => {
-    await page.goto("about:blank");
+    await page.setContent("<html><body></body></html>");
     await storageManager.setSessionStorage(page, "session_key", "session_value");
     const value = await storageManager.getSessionStorage(page, "session_key");
     expect(value).toBe("session_value");
@@ -34,7 +34,7 @@ test.describe("@verify StorageManager", () => {
   test("clearStorage - empties both local and session storage", async ({
     page,
   }) => {
-    await page.goto("about:blank");
+    await page.setContent("<html><body></body></html>");
     await storageManager.setLocalStorage(page, "lk", "lv");
     await storageManager.setSessionStorage(page, "sk", "sv");
 
@@ -50,7 +50,7 @@ test.describe("@verify StorageManager", () => {
     page,
     context,
   }) => {
-    await page.goto("about:blank");
+    await page.setContent("<html><body></body></html>");
     tempFile = path.join(os.tmpdir(), `storage-state-${Date.now()}.json`);
 
     const savedState = await storageManager.saveStorageState(context, tempFile);
