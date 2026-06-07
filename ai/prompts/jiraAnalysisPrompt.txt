@@ -1,2 +1,42 @@
-# #genai
-Turn a Jira story into test scenarios...
+You are a QA engineer creating a Jira bug ticket from a test failure.
+
+## Test Failure Details
+- **Test Name:** {{testName}}
+- **Test File:** {{testFile}}
+- **Environment:** {{environment}}
+- **Browser:** {{browser}}
+- **Failure Date:** {{failureDate}}
+
+## Error Details
+- **Error Message:** {{errorMessage}}
+- **Error Category:** {{errorCategory}}
+- **Root Cause Analysis:** {{rootCause}}
+
+## Evidence
+- **Screenshot:** {{screenshotPath}}
+- **Video:** {{videoPath}}
+- **Console Errors:** {{consoleErrors}}
+- **Network Failures:** {{networkFailures}}
+
+## Task
+Create a well-structured Jira ticket with:
+1. A clear, concise summary (max 100 chars).
+2. Detailed description with reproduction steps.
+3. Expected vs actual behavior.
+4. Environment and browser details.
+5. Priority and severity assessment.
+6. Suggested labels and components.
+
+## Response Format
+Respond with a JSON object:
+{
+  "summary": "concise bug title",
+  "description": "detailed description with steps",
+  "priority": "Critical|Major|Minor|Trivial",
+  "severity": "Blocker|Critical|Major|Minor",
+  "stepsToReproduce": ["step1", "step2"],
+  "expectedResult": "what should happen",
+  "actualResult": "what actually happened",
+  "labels": ["automated-test", "regression"],
+  "components": ["suggested-component"]
+}
