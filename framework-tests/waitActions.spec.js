@@ -67,12 +67,12 @@ test.describe("WaitActions @verify", () => {
   });
 
   test("waitForResponse - resolves when matching response is received", async ({ page }) => {
-    await page.goto("about:blank");
+    await page.setContent("<html><body></body></html>");
     await page.route("**/test-api", (route) =>
       route.fulfill({ status: 200, body: "ok" })
     );
     const responsePromise = waitActions.waitForResponse(page, /test-api/, 5000);
-    await page.evaluate(() => fetch("/test-api"));
+    await page.evaluate(() => fetch(window.location.origin + "/test-api"));
     const response = await responsePromise;
     expect(response.status()).toBe(200);
   });
