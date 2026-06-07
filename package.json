@@ -1,7 +1,8 @@
 {
-  "name": "playwright-enterprise-framework",
+  "name": "@happysangram/playwright-enterprise-core-framework",
   "type": "module",
   "version": "1.0.0",
+  "description": "Enterprise Playwright testing framework",
   "main": "index.js",
   "exports": {
     ".": "./index.js",
@@ -32,10 +33,21 @@
     "test:firefox": "npx playwright test --project=firefox",
     "test:webkit": "npx playwright test --project=webkit"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "index.js",
+    "core/",
+    "config/",
+    "integrations/",
+    "templates/",
+    "global-setup.js",
+    "global-teardown.js"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "@playwright/test": "^1.60.0",
     "@types/node": "^25.8.0",
