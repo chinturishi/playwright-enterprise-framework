@@ -1,7 +1,23 @@
 import { test, expect } from "../core/fixtures/baseFixture.js";
 import waitActions from "../core/wrappers/waitActions.js";
+import { createServer } from "node:http";
 
 test.describe("WaitActions @verify", () => {
+  let server;
+  let baseUrl;
+
+  test.beforeAll(async () => {
+    server = createServer((req, res) => {
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.end("<html><body></body></html>");
+    });
+    await new Promise((resolve) => server.listen(0, resolve));
+    baseUrl = `http://localhost:${server.address().port}`;
+  });
+
+  test.afterAll(async () => {
+    await new Promise((resolve) => server.close(resolve));
+  });
   test("waitForVisible - resolves when hidden element becomes visible", async ({ page }) => {
     await page.setContent(`<div id="target" style="display:none">Hello</div>`);
     await page.evaluate(() => {
@@ -67,15 +83,12 @@ test.describe("WaitActions @verify", () => {
   });
 
   test("waitForResponse - resolves when matching response is received", async ({ page }) => {
-    await page.route("**/*", (route) => {
-      if (route.request().url().includes("test-api")) {
-        return route.fulfill({ status: 200, body: "ok" });
-      }
-      return route.fulfill({ status: 200, contentType: "text/html", body: "<html><body></body></html>" });
-    });
-    await page.goto("http://localhost/page");
+    await page.goto(baseUrl);
+    await page.route("**/test-api", (route) =>
+      route.fulfill({ status: 200, body: "ok" })
+    );
     const responsePromise = waitActions.waitForResponse(page, /test-api/, 5000);
-    await page.evaluate(() => fetch("/test-api"));
+    await page.evaluate((url) => fetch(url + "/test-api"), baseUrl);
     const response = await responsePromise;
     expect(response.status()).toBe(200);
   });
