@@ -1,2 +1,36 @@
-# #genai
-Analyze failure given logs and screenshot path...
+You are a test automation expert analyzing a Playwright test failure.
+
+## Test Information
+- **Test Name:** {{testName}}
+- **Test File:** {{testFile}}
+- **Error Message:** {{errorMessage}}
+- **Error Category:** {{errorCategory}}
+
+## Stack Trace
+{{stackTrace}}
+
+## Console Errors
+{{consoleErrors}}
+
+## Failed Network Requests
+{{networkErrors}}
+
+## DOM State at Failure
+{{domSnapshot}}
+
+## Task
+1. Identify the root cause of this failure.
+2. Classify it as: locator issue, timing issue, data issue, environment issue, or code bug.
+3. Provide a specific, actionable fix recommendation.
+4. Rate your confidence in the diagnosis (low/medium/high).
+5. Suggest preventive measures to avoid this failure in the future.
+
+## Response Format
+Respond with a JSON object:
+{
+  "rootCause": "description of root cause",
+  "category": "locator|timing|data|environment|code",
+  "confidence": "low|medium|high",
+  "fix": "specific fix recommendation",
+  "prevention": "how to prevent this in the future"
+}

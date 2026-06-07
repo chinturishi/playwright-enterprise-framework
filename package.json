@@ -3,7 +3,35 @@
   "type": "module",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "exports": {
+    ".": "./index.js",
+    "./fixtures": "./core/fixtures/baseFixture.js",
+    "./fixtures/role": "./core/fixtures/roleFixture.js",
+    "./fixtures/db": "./core/fixtures/dbFixture.js",
+    "./pages": "./core/pages/BasePage.js",
+    "./pages/framework": "./core/pages/FrameworkPage.js",
+    "./errors": "./core/errors/FrameworkError.js",
+    "./wrappers/*": "./core/wrappers/*.js",
+    "./browser": "./core/browser/browserManager.js",
+    "./browser/factories": "./core/browser/factories/browserFactory.js",
+    "./api": "./core/api/apiInterceptor.js",
+    "./config": "./config/global/configLoader.js",
+    "./utils/*": "./core/utils/*.js",
+    "./logging": "./core/logging/logger.js"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.js",
+    "clean": "node scripts/cleanReports.js",
+    "merge-reports": "node scripts/mergeReports.js",
+    "generate-baselines": "node scripts/generateBaseline.js",
+    "summary": "node scripts/executionSummary.js",
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug",
+    "test:chromium": "npx playwright test --project=chromium",
+    "test:firefox": "npx playwright test --project=firefox",
+    "test:webkit": "npx playwright test --project=webkit"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -19,6 +47,8 @@
     "dotenv": "^17.4.2",
     "faker": "^6.6.6",
     "fs-extra": "^11.3.5",
+    "pixelmatch": "^6.0.0",
+    "pngjs": "^7.0.0",
     "winston": "^3.19.0"
   }
 }

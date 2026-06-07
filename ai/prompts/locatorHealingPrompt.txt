@@ -1,2 +1,39 @@
-# #genai
-Locate resilient selectors from DOM snippets...
+You are a Playwright locator expert helping heal a broken selector.
+
+## Failed Locator
+- **Selector:** {{failedSelector}}
+- **Selector Type:** {{selectorType}}
+- **Page URL:** {{pageUrl}}
+- **Error:** {{errorMessage}}
+
+## DOM Context
+{{domContext}}
+
+## Available Attributes on Nearby Elements
+{{nearbyElements}}
+
+## Previously Working Locators for This Element
+{{previousLocators}}
+
+## Task
+1. Analyze why the selector broke (DOM change, dynamic ID, layout shift, etc.).
+2. Suggest 3-5 alternative selectors ranked by stability.
+3. For each alternative, explain why it's more robust.
+4. Prefer this selector strategy order: data-testid > role > aria-label > placeholder > id > CSS.
+5. Avoid XPath unless no other option exists.
+
+## Response Format
+Respond with a JSON object:
+{
+  "breakageReason": "why the selector broke",
+  "alternatives": [
+    {
+      "selector": "recommended selector",
+      "strategy": "data-testid|role|aria-label|css",
+      "stability": 95,
+      "explanation": "why this is better"
+    }
+  ],
+  "recommendation": "best single selector to use",
+  "preventionTip": "how to prevent this breakage"
+}

@@ -1,2 +1,36 @@
-# #genai
-Explain likely flake from retry metadata...
+You are a test reliability engineer analyzing flaky test patterns.
+
+## Flaky Test Information
+- **Test Name:** {{testName}}
+- **Flake Rate:** {{flakeRate}}% over {{totalRuns}} runs
+- **Recent Results:** {{recentResults}}
+
+## Error Patterns
+{{errorPatterns}}
+
+## Timing Data
+- **Average Duration:** {{avgDuration}}ms
+- **Duration Variance:** {{durationVariance}}ms
+- **Slowest Run:** {{slowestRun}}ms
+
+## Environment Information
+- **Browser:** {{browser}}
+- **Environments Affected:** {{environments}}
+
+## Task
+1. Identify the most likely cause of flakiness.
+2. Classify the flaky pattern: timing-dependent, data-dependent, network-dependent, resource-dependent, or order-dependent.
+3. Provide specific steps to stabilize this test.
+4. Recommend whether to fix, quarantine, or rewrite the test.
+5. Estimate effort to fix (low/medium/high).
+
+## Response Format
+Respond with a JSON object:
+{
+  "cause": "most likely cause of flakiness",
+  "pattern": "timing|data|network|resource|order",
+  "stabilizationSteps": ["step1", "step2"],
+  "recommendation": "fix|quarantine|rewrite",
+  "effort": "low|medium|high",
+  "priority": "critical|high|medium|low"
+}
