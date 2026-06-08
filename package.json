@@ -1,7 +1,7 @@
 {
-  "name": "@happysangram/playwright-enterprise-core-framework",
+  "name": "@chinturishi/playwright-enterprise-core-framework",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Enterprise Playwright testing framework",
   "main": "index.js",
   "exports": {
