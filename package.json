@@ -1,7 +1,7 @@
 {
   "name": "@chinturishi/playwright-enterprise-core-framework",
   "type": "module",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Enterprise Playwright testing framework",
   "main": "index.js",
   "exports": {
@@ -17,6 +17,12 @@
     "./browser/factories": "./core/browser/factories/browserFactory.js",
     "./api": "./core/api/apiInterceptor.js",
     "./config": "./config/global/configLoader.js",
+    "./config/playwright": "./config/global/playwright.base.config.js",
+    "./config/framework": "./config/global/framework.config.js",
+    "./config/execution": "./config/global/execution.config.js",
+    "./config/constants/timeouts": "./config/constants/timeoutConstants.js",
+    "./config/constants/api": "./config/constants/apiConstants.js",
+    "./config/constants/framework": "./config/constants/frameworkConstants.js",
     "./utils/*": "./core/utils/*.js",
     "./logging": "./core/logging/logger.js"
   },
